@@ -108,6 +108,7 @@ describe('React components', () => {
             // simulating a 'change' event with an event described as the second argument given to `simulate`
             animalSelect.find('select').simulate('change', {target: {value: animal}});
             // the spy sent in should be called with the argument described
+            // note: the setAnimalSpy should be invoked by passing the animal data NOT the event
             expect(setAnimalSpy.calledWith(animal)).to.be.true;
         });
 
