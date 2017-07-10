@@ -44,7 +44,7 @@ describe('React components', () => {
 
         xit('has a setAnimal function that takes in an animal and sets the state', () => {
             let newAnimal = getRandomAnimal();
-            expect(exhibit.instance().setAnimal).to.be.function;
+            expect(exhibit.instance().setAnimal).to.be.a('function');
             exhibit.instance().setAnimal(newAnimal);
             expect(exhibit.state()).to.be.deep.equal({selectedAnimal: newAnimal})
         });        
@@ -104,7 +104,7 @@ describe('React components', () => {
         });
 
         xit('select should have an onChange event that submits the new animal', () => {
-            expect(animalSelect.props('select').onChange).to.be.function;
+            expect(animalSelect.props('select').onChange).to.be.a('function');
             // choosing a random animal
             let animal = getRandomAnimal()
             // simulating a 'change' event with an event described as the second argument given to `simulate`
