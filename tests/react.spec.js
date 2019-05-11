@@ -82,11 +82,11 @@ describe('React components', () => {
             animalSelect = shallow(<AnimalSelect submitAnimal={setAnimalSpy} animals={animals} />);
         });
 
-        xit('should be a form', () => {
+        it('should be a form', () => {
             expect(animalSelect.is('form')).to.be.true;
         });
 
-        xit('form should have a select that lists all the animals as options', () => {
+        it('form should have a select that lists all the animals as options', () => {
             expect(animalSelect.find('select').length).to.be.equal(1);
             // loops through each option in the select
             // determines if the option's key is equivalent to the animal
@@ -97,13 +97,13 @@ describe('React components', () => {
             })
         });
 
-        xit('should have a label to describe the select', () => {
+        it('should have a label to describe the select', () => {
             const selectLabel = animalSelect.find('label')
             expect(selectLabel.length).to.be.equal(1);
             expect(selectLabel.text()).to.be.equal("Select an Animal: ");
         });
 
-        xit('select should have an onChange event that submits the new animal', () => {
+        it('select should have an onChange event that submits the new animal', () => {
             expect(animalSelect.props('select').onChange).to.be.function;
             // choosing a random animal
             let animal = getRandomAnimal()
