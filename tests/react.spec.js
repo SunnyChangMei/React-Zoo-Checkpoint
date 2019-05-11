@@ -21,39 +21,39 @@ describe('React components', () => {
             selectedAnimal = getRandomAnimal();
             // this is the enzyme way of creating the tag and sending it props
                 // meaning shallow is like a parent rendering an Exhibit element and sending it animals and selectedAnimal
-                // exhibit is the returned value of `shallow()` which is a wrapper around our ReactElement (exhibit) 
+                // exhibit is the returned value of `shallow()` which is a wrapper around our ReactElement (exhibit)
             exhibit = shallow(<Exhibit animals={animals} selectedAnimal={selectedAnimal}/>);
         });
 
-        xit('has an initial *local* state with a selectedAnimal', () => {
+        it('has an initial *local* state with a selectedAnimal', () => {
             expect(exhibit.state()).to.be.deep.equal({selectedAnimal});
         });
 
-        xit('uses <AnimalSelect /> and <Cage />', () => {
+        it('uses <AnimalSelect /> and <Cage />', () => {
             expect(exhibit.find(Cage).length).to.be.equal(1);
             expect(exhibit.find(AnimalSelect).length).to.be.equal(1);
         });
 
-        xit('passes its own animal prop to <Cage />', () => {
+        it('passes its own animal prop to <Cage />', () => {
             expect(exhibit.find(Cage).props().selectedAnimal).to.be.equal(selectedAnimal);
         });
 
-        xit('passes its own animals prop to <AnimalSelect />', () => {
+        it('passes its own animals prop to <AnimalSelect />', () => {
             expect(exhibit.find(AnimalSelect).props().animals).to.be.deep.equal(animals);
         });
 
-        xit('has a setAnimal function that takes in an animal and sets the state', () => {
+        it('has a setAnimal function that takes in an animal and sets the state', () => {
             let newAnimal = getRandomAnimal();
             expect(exhibit.instance().setAnimal).to.be.function;
             exhibit.instance().setAnimal(newAnimal);
             expect(exhibit.state()).to.be.deep.equal({selectedAnimal: newAnimal})
-        });        
+        });
 
-        xit('ensures setAnimal function is properly bound', () => {
+        it('ensures setAnimal function is properly bound', () => {
             expect(exhibit.instance().setAnimal.hasOwnProperty('prototype')).to.be.false;
         });
 
-        xit('passes its own setAnimal prop to <AnimalSelect /> as submitAnimal', () => {
+        it('passes its own setAnimal prop to <AnimalSelect /> as submitAnimal', () => {
             expect(exhibit.find(AnimalSelect).props().submitAnimal).to.be.equal(exhibit.instance().setAnimal);
         });
 
@@ -67,7 +67,7 @@ describe('React components', () => {
             cage = shallow(<Cage selectedAnimal={animal} />);
         });
 
-        xit('should be a <div> with an expected background', () => {
+        it('should be a <div> with an expected background', () => {
             expect(cage.is('div')).to.be.equal(true);
             expect(cage.get(0).props.style.backgroundImage).to.be.equal(`url(./src/img/${animal}.gif`);
         });
